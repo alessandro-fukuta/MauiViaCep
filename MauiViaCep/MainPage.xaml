@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiViaCep.MainPage">
+
+    <StackLayout Margin="0" Padding="10" BackgroundColor="#2E2E2E">
+
+
+        <Label Text="API VIACEP" TextColor="Tan"   
+               FontSize="32" LineBreakMode="WordWrap" VerticalOptions="Start" HorizontalOptions="Center" />
+        <Label Text="Consumindo Web API" TextColor="Tan" HorizontalOptions="Center" Margin="20,0,20,20" />
+
+        <Frame CornerRadius="10" Padding="4" BackgroundColor="Gray"
+               Margin="60,10,60,10" BorderColor="White">
+            
+            <Grid Padding="4"
+                      ColumnSpacing="10"
+                      VerticalOptions="Center"
+                      HeightRequest="50"
+                      WidthRequest="200"
+                      BackgroundColor="Gray">
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Ícone de envelope -->
+                <Image Source="email.png"
+                           WidthRequest="32"
+                           HeightRequest="32"
+                           VerticalOptions="Center"
+                           Margin="5,0"/>
+
+                <!-- Entry estilizado -->
+                <Entry Grid.Column="1"
+                       x:Name="txtCep"
+                       Placeholder="Digite o Cep"
+                       Keyboard="Numeric"
+                       TextColor="Tan"
+                       PlaceholderColor="WhiteSmoke"
+                       FontSize="16"
+                       TextChanged="FormataCep"
+                       WidthRequest="150"
+                       HorizontalTextAlignment="Center"
+                       Completed="btnBuscar_Clicked"
+                       VerticalOptions="Center"/>
+            </Grid>
+        </Frame>
+
+        <Button Text="Buscar" Margin="80, 30, 80, 80" 
+                BackgroundColor="Tan" 
+                TextColor="Black" 
+                Clicked="btnBuscar_Clicked" />
+
+        <ActivityIndicator IsVisible="False" x:Name="xAtividade" Color="White" IsRunning="True" />
+
+
+        <Label x:Name="lblCepLogradouro" Text="Logradouro" TextColor="Tan" BackgroundColor="Gray"
+               HeightRequest="40" VerticalTextAlignment="Center" Padding="10" Margin="20,0,20,5"/>
+        <Label x:Name="lblLogradouro" Text="Logradouro" TextColor="Tan" BackgroundColor="Gray"
+               HeightRequest="40" VerticalTextAlignment="Center" Padding="10" Margin="20,0,20,5"/>
+        <Label x:Name="lblBairro" Text="Logradouro" TextColor="Tan" BackgroundColor="Gray"
+               HeightRequest="40" VerticalTextAlignment="Center" Padding="10" Margin="20,0,20,5"/>
+        <Label x:Name="lblCidade" Text="Logradouro" TextColor="Tan" BackgroundColor="Gray"
+               HeightRequest="40" VerticalTextAlignment="Center" Padding="10" Margin="20,0,20,5"/>
+        <Label x:Name="lblEstado" Text="Logradouro" TextColor="Tan" BackgroundColor="Gray"
+               HeightRequest="40" VerticalTextAlignment="Center" Padding="10" Margin="20,0,20,5"/>
+
+        <Label Text="Prof. Alessandro Fukuta" 
+               VerticalOptions="EndAndExpand" 
+               HorizontalTextAlignment="Center" 
+               TextColor="Tan" 
+               FontAttributes="Bold,Italic" />
+
+    </StackLayout>
+
+</ContentPage>
