@@ -1,24 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundImageSource="fundo02.png"
+             BackgroundColor="Black"
              x:Class="MauiViaCep.MainPage">
 
-    <StackLayout Margin="0" Padding="10" BackgroundColor="#2E2E2E">
+    <StackLayout Margin="0" Padding="10" >
 
+        <Image Source="fund01.png" />
+        <Label Text="API VIACEP" TextColor="Azure" FontAttributes="Bold"   
+               FontSize="32" LineBreakMode="WordWrap" VerticalOptions="Start" HorizontalOptions="Start" />
+        <Label Text="Versão 1.0" TextColor="Tan" FontAttributes="Bold" HorizontalOptions="Start" Margin="0,0,20,20" />
 
-        <Label Text="API VIACEP" TextColor="Tan"   
-               FontSize="32" LineBreakMode="WordWrap" VerticalOptions="Start" HorizontalOptions="Center" />
-        <Label Text="Consumindo Web API" TextColor="Tan" HorizontalOptions="Center" Margin="20,0,20,20" />
-
-        <Frame CornerRadius="10" Padding="4" BackgroundColor="Gray"
-               Margin="60,10,60,10" BorderColor="White">
+        <Frame CornerRadius="10" Padding="4" BackgroundColor="Orange" Opacity="0.7"
+               Margin="60,10,60,10" BorderColor="Blue">
             
             <Grid Padding="4"
                       ColumnSpacing="10"
                       VerticalOptions="Center"
                       HeightRequest="50"
                       WidthRequest="200"
-                      BackgroundColor="Gray">
+                      BackgroundColor="Orange">
                 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -30,15 +32,15 @@
                            WidthRequest="32"
                            HeightRequest="32"
                            VerticalOptions="Center"
-                           Margin="5,0"/>
+                           Margin="0,0"/>
 
                 <!-- Entry estilizado -->
                 <Entry Grid.Column="1"
                        x:Name="txtCep"
                        Placeholder="Digite o Cep"
                        Keyboard="Numeric"
-                       TextColor="Tan"
-                       PlaceholderColor="WhiteSmoke"
+                       TextColor="Black"
+                       PlaceholderColor="Black"
                        FontSize="16"
                        TextChanged="FormataCep"
                        WidthRequest="150"
@@ -48,24 +50,35 @@
             </Grid>
         </Frame>
 
-        <Button Text="Buscar" Margin="80, 30, 80, 80" 
+        <Button Text="Buscar" Margin="80, 30, 80, 30" 
                 BackgroundColor="Tan" 
                 TextColor="Black" 
                 Clicked="btnBuscar_Clicked" />
 
         <ActivityIndicator IsVisible="False" x:Name="xAtividade" Color="White" IsRunning="True" />
 
+        <Label Text="Cep" Margin="20,0,0,0" />
+        <Label x:Name="lblCepLogradouro" Text="" TextColor="Red" BackgroundColor="LightGray"
+               HeightRequest="30" VerticalTextAlignment="Start" Padding="10,5" Margin="20,0,20,5"
+               WidthRequest="100" HorizontalOptions="Start"
+               />
+        
+        <Label Text="Logradouro" Margin="20,0,0,0" />
+        <Label x:Name="lblLogradouro" Text="" TextColor="Black" BackgroundColor="LightGray"
+               HeightRequest="30" VerticalTextAlignment="Center" Padding="10,5" Margin="20,0,20,5"/>
 
-        <Label x:Name="lblCepLogradouro" Text="Logradouro" TextColor="Tan" BackgroundColor="Gray"
-               HeightRequest="40" VerticalTextAlignment="Center" Padding="10" Margin="20,0,20,5"/>
-        <Label x:Name="lblLogradouro" Text="Logradouro" TextColor="Tan" BackgroundColor="Gray"
-               HeightRequest="40" VerticalTextAlignment="Center" Padding="10" Margin="20,0,20,5"/>
-        <Label x:Name="lblBairro" Text="Logradouro" TextColor="Tan" BackgroundColor="Gray"
-               HeightRequest="40" VerticalTextAlignment="Center" Padding="10" Margin="20,0,20,5"/>
-        <Label x:Name="lblCidade" Text="Logradouro" TextColor="Tan" BackgroundColor="Gray"
-               HeightRequest="40" VerticalTextAlignment="Center" Padding="10" Margin="20,0,20,5"/>
-        <Label x:Name="lblEstado" Text="Logradouro" TextColor="Tan" BackgroundColor="Gray"
-               HeightRequest="40" VerticalTextAlignment="Center" Padding="10" Margin="20,0,20,5"/>
+        <Label Text="Bairro" Margin="20,0,0,0" />
+        <Label x:Name="lblBairro" Text="" TextColor="Black" BackgroundColor="LightGray"
+               HeightRequest="30" VerticalTextAlignment="Center" Padding="10,5" Margin="20,0,20,5"/>
+
+        <Label Text="Cidade" Margin="20,0,0,0" />
+        <Label x:Name="lblCidade" Text="" TextColor="Black" BackgroundColor="LightGray"
+               HeightRequest="30" VerticalTextAlignment="Center" Padding="10,5" Margin="20,0,20,5"/>
+
+        <Label Text="Estado" Margin="20,0,0,0" />
+        <Label x:Name="lblEstado" Text="" TextColor="Black" BackgroundColor="LightGray"
+               HeightRequest="30" VerticalTextAlignment="Center" Padding="10,5" Margin="20,0,20,5"
+               WidthRequest="100" HorizontalOptions="Start" />
 
         <Label Text="Prof. Alessandro Fukuta" 
                VerticalOptions="EndAndExpand" 

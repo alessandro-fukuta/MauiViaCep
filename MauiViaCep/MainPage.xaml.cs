@@ -20,6 +20,7 @@ namespace MauiViaCep
         public MainPage()
         {
             InitializeComponent();
+            txtCep.Focus();
         }
 
        
