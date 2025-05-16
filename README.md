@@ -25,6 +25,6 @@ a pesquisa pode ser realizada clicando no Botao Pesquisar, ou no Botão OK do te
 Clone este repositório:
 
 ```sh
-git clone https://github.com/seu-usuario/seu-repositorio.git
-
+git clone https://github.com/alessandro-fukuta/mauiviacep.git
+```
 
