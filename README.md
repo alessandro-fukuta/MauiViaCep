@@ -1,6 +1,6 @@
 # MauiViaCep
 
-<img src="https://i.imgur.com/sF9WtIh.jpeg" alt="Imagem do Aplicativo">
+<img src="https://i.imgur.com/sF9WtIh.jpeg" alt="Imagem do Aplicativo" height="320">
 
 # Consumo da API do ViaCEP em .NET MAUI
 
