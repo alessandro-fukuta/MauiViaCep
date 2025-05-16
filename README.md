@@ -1,5 +1,7 @@
 # MauiViaCep
 
+<img src="https://i.imgur.com/sF9WtIh.jpeg" alt="Imagem do Aplicativo">
+
 # Consumo da API do ViaCEP em .NET MAUI
 
 Este projeto demonstra como consumir a API pública do [ViaCEP](https://viacep.com.br/) utilizando .NET MAUI e C#.
@@ -17,6 +19,8 @@ Antes de começar, certifique-se de ter instalado:
 A aplicação permite ao usuário inserir um CEP e buscar os dados correspondentes através da API do ViaCEP.
 o campo de CEP é tratado com uma mascara no formato: 00000-000.
 a pesquisa pode ser realizada clicando no Botao Pesquisar, ou no Botão OK do teclado
+
+## Métodos Gerais - Possui funções como a de formatar a mascara do cep durante a digitação
 
 ## Instalação
 
