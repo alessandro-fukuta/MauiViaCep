@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="120"
+   height="120"
+   viewBox="0 0 120 120"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   sodipodi:docname="appsfukuta.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="6.475"
+     inkscape:cx="48.416988"
+     inkscape:cy="60"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20.5634px;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';fill:#0000ff;stroke:#0000ff;stroke-width:0.428405"
+       x="6.5404754"
+       y="67.927032"
+       id="text1"
+       transform="scale(1.0503747,0.95204123)"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         x="6.5404754"
+         y="67.927032"
+         style="fill:#0000ff;stroke:#0000ff;stroke-width:0.428405">.fukuta.net</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.57373px;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';fill:#0000ff;stroke:#0000ff;stroke-width:0.473357"
+       x="23.946444"
+       y="75.98156"
+       id="text3"
+       transform="scale(1.0344392,0.96670734)"><tspan
+         sodipodi:role="line"
+         id="tspan3"
+         x="23.946444"
+         y="75.98156"
+         style="stroke-width:0.473357">code apps forever</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15.509px;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';fill:#0000ff;stroke:#0000ff;stroke-width:0.969314"
+       x="73.505409"
+       y="51.744415"
+       id="text4"
+       transform="scale(1.0320606,0.96893534)"><tspan
+         sodipodi:role="line"
+         id="tspan4"
+         x="73.505409"
+         y="51.744415"
+         style="stroke-width:0.969314">福田</tspan></text>
+  </g>
+</svg>
