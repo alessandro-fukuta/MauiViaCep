@@ -188,7 +188,7 @@ namespace MauiViaCep
                 string urlMunicipios = "https://servicodados.ibge.gov.br/api/v1/localidades/estados/" + estadoSelecionado.id.ToString() + "/municipios";
                 cidadesLista = await ApiClass.GetJsonCidades(urlMunicipios);
 
-                pkCidades.ItemsSource = cidadesLista.OrderBy(x=>x.nome).Select(x => x.nome).ToArray();
+                pkCidades.ItemsSource = cidadesLista.Select(x => x.nome).ToArray();
 
                 xAtividade.IsRunning = false;
                 xAtividade.IsVisible = false;
@@ -203,10 +203,9 @@ namespace MauiViaCep
             if (picker != null)
             {
                 var cidadeSelecionada = cidadesLista[picker.SelectedIndex];
-                
                 CidadeEscolhida = cidadeSelecionada.nome;
-                
-                
+
+                int x = 0;
                
                 // DisplayAlert("Cidade Selecionada", $"Você selecionou: {cidadeSelecionada.nome}", "OK");
 

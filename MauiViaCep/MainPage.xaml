@@ -64,13 +64,15 @@
                     <RowDefinition Height="20"/>
                 </Grid.RowDefinitions>
 
-                
+                <BoxView BackgroundColor="Orange" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"></BoxView>
+               
                 <Picker x:Name="pkEstados" 
                         Title="UF" 
                         Grid.Column="0" 
                         Grid.Row="0" 
                         TextColor="Black" FontSize="16" FontAttributes="Bold"
                         TitleColor="Black" 
+                        BackgroundColor="Orange"
                         SelectedIndexChanged="pkEstados_ItemSelecionado"
                         />
                 
@@ -80,13 +82,14 @@
                         Grid.Row="0" 
                         TextColor="Black" 
                         TitleColor="Black"
+                        BackgroundColor="Orange"
                         SelectedIndexChanged="pkCidades_ItemSelecionado"
-                        />  
-
+                        />
+               
                 <Image Source="email.png" Grid.Column="0" Grid.Row="1"
                     WidthRequest="32"
                     HeightRequest="32"
-                    VerticalOptions="Start"
+                    VerticalOptions="Center"
                     Margin="0,0"/>  
 
                 <!-- Entry estilizado -->
