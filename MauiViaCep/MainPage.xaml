@@ -8,24 +8,130 @@
     <StackLayout Margin="0" Padding="10" >
 
         <Image Source="fund01.png" />
+        
         <Label Text="API VIACEP" TextColor="Azure" FontAttributes="Bold"   
                FontSize="32" LineBreakMode="WordWrap" VerticalOptions="Start" HorizontalOptions="Start" />
-        <Label Text="Versão 1.0" TextColor="Tan" FontAttributes="Bold" HorizontalOptions="Start" Margin="0,0,20,20" />
+        
+        <Label Text="Versão 1.1" TextColor="Tan" FontAttributes="Bold" HorizontalOptions="Start" Margin="0,0,20,20" />
 
-        <Frame CornerRadius="10" Padding="4" BackgroundColor="Orange" Opacity="0.7"
-               Margin="60,10,60,10" BorderColor="Blue">
+        <Frame CornerRadius="10" Padding="4" BackgroundColor="Black" Opacity="0.7"
+           Margin="10,10,10,10" BorderColor="Blue">
+
+            <Grid Margin="10">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label x:Name="lblNomeFiltro" Text="Por Cep" 
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Start" 
+                   TextColor="White" 
+                   FontSize="16" 
+                   Grid.Column="0"
+                   Margin="0,0,20,0"/>
+
+                <Switch x:Name="swFiltro" IsToggled="false" Grid.Column="1" OnColor="Orange"
+                        ThumbColor="Green" Toggled="swFiltro_Toggled" />
+
+            </Grid>
+
+        </Frame>
+
+        <ActivityIndicator IsVisible="False" x:Name="xAtividade" Color="White" IsRunning="True" />
+
+        <Frame x:Name="frameEndereco" IsVisible="false" Margin="10" BackgroundColor="Gold" Opacity="0.7"
+               BorderColor="Red">
+
+            <Grid Padding="4"
+             ColumnSpacing="10"
+             HeightRequest="350"
+             WidthRequest="310"
+             BackgroundColor="Gold">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Image Source="email.png" Grid.Column="0" Grid.Row="0"
+                    WidthRequest="32"
+                    HeightRequest="32"
+                    VerticalOptions="Center"
+                    Margin="0,0"/>  
+
+                <!-- Entry estilizado -->
+                <Entry Grid.Column="1" Grid.Row="0"
+                    x:Name="txtLogradouro"
+                    Placeholder="Rua (min 3 caracteres)"
+                    Keyboard="Text"
+                    TextColor="Black"
+                    PlaceholderColor="Black"
+                    FontSize="16"
+                    WidthRequest="310"
+                    HorizontalTextAlignment="Center"
+                    Completed="btnBuscarLogradouro_Clicked"
+                    VerticalOptions="Center"/>
+
+                <ListView x:Name="lstEnds" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="32"/>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="pontinho.png" Aspect="AspectFill" HeightRequest="80" Grid.RowSpan="2"  BackgroundColor="Transparent" />
+                                    <Label Text="{Binding cep}" Grid.Column="1" TextColor="Black" FontAttributes="Bold" />
+                                    <Label Text="{Binding bairro}" Grid.Column="2" TextColor="Black" />
+                                    <Label Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Text="{Binding logradouro}" TextColor="Black" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </Grid>
+
+        </Frame>
+        
+        <Frame x:Name="frameCep" CornerRadius="10" Padding="4" BackgroundColor="Orange" Opacity="0.7"
+               Margin="10,10,10,10" BorderColor="Blue">
             
             <Grid Padding="4"
-                      ColumnSpacing="10"
-                      VerticalOptions="Center"
-                      HeightRequest="50"
-                      WidthRequest="200"
+                      ColumnSpacing="1"
+                      WidthRequest="300"
                       BackgroundColor="Orange">
                 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="25"/>
+                </Grid.RowDefinitions>
 
                 <!-- Ícone de envelope -->
                 <Image Source="email.png"
@@ -47,45 +153,34 @@
                        HorizontalTextAlignment="Center"
                        Completed="btnBuscar_Clicked"
                        VerticalOptions="Center"/>
+
+
+                <Label Grid.Column="0" Grid.Row="2" Text="Logradouro" />
+                <Label Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Padding="10,0,0,0" TextColor="Black" x:Name="lblLogradouro" BackgroundColor="White" />
+
+                <Label Grid.Column="0" Grid.Row="4" Text="Bairro" />
+                <Label Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" TextColor="Black" Padding="10,0,0,0"  x:Name="lblBairro" BackgroundColor="White" />
+
+                <Label Grid.Column="0" Grid.Row="6" Text="Cidade" />
+                <Label Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="2" TextColor="Black"  Padding="10,0,0,0" x:Name="lblCidade" BackgroundColor="White" />
+
+                <Label Grid.Column="0" Grid.Row="8" Text="Estado" />
+                <Label Grid.Column="0" Grid.Row="9" Grid.ColumnSpan="2" TextColor="Black"  Padding="10,0,0,0" x:Name="lblEstado" BackgroundColor="White" WidthRequest="60" HorizontalOptions="Start"  />
+
+
             </Grid>
         </Frame>
 
+    
+    <!--
         <Button Text="Buscar" Margin="80, 30, 80, 30" 
                 BackgroundColor="Tan" 
                 TextColor="Black" 
                 Clicked="btnBuscar_Clicked" />
 
-        <ActivityIndicator IsVisible="False" x:Name="xAtividade" Color="White" IsRunning="True" />
-
-        <Label Text="Cep" Margin="20,0,0,0" />
-        <Label x:Name="lblCepLogradouro" Text="" TextColor="Red" BackgroundColor="LightGray"
-               HeightRequest="30" VerticalTextAlignment="Start" Padding="10,5" Margin="20,0,20,5"
-               WidthRequest="100" HorizontalOptions="Start"
-               />
+    -->
         
-        <Label Text="Logradouro" Margin="20,0,0,0" />
-        <Label x:Name="lblLogradouro" Text="" TextColor="Black" BackgroundColor="LightGray"
-               HeightRequest="30" VerticalTextAlignment="Center" Padding="10,5" Margin="20,0,20,5"/>
-
-        <Label Text="Bairro" Margin="20,0,0,0" />
-        <Label x:Name="lblBairro" Text="" TextColor="Black" BackgroundColor="LightGray"
-               HeightRequest="30" VerticalTextAlignment="Center" Padding="10,5" Margin="20,0,20,5"/>
-
-        <Label Text="Cidade" Margin="20,0,0,0" />
-        <Label x:Name="lblCidade" Text="" TextColor="Black" BackgroundColor="LightGray"
-               HeightRequest="30" VerticalTextAlignment="Center" Padding="10,5" Margin="20,0,20,5"/>
-
-        <Label Text="Estado" Margin="20,0,0,0" />
-        <Label x:Name="lblEstado" Text="" TextColor="Black" BackgroundColor="LightGray"
-               HeightRequest="30" VerticalTextAlignment="Center" Padding="10,5" Margin="20,0,20,5"
-               WidthRequest="100" HorizontalOptions="Start" />
-
-        <Label Text="Prof. Alessandro Fukuta" 
-               VerticalOptions="EndAndExpand" 
-               HorizontalTextAlignment="Center" 
-               TextColor="Tan" 
-               FontAttributes="Bold,Italic" />
-
+     
     </StackLayout>
 
 </ContentPage>
