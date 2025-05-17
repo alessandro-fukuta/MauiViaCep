@@ -1,8 +1,19 @@
 # MauiViaCep
 
-<img src="https://i.imgur.com/sF9WtIh.jpeg" alt="Imagem do Aplicativo" height="320">
-<img src="https://i.imgur.com/cpDQG2G.jpeg" alt="Busca por Endereço" height="320">
 
+
+<table>
+  <tr>
+    <td>Consulta por Cep</td>
+    <td>Consulta por Endereço</td>
+  </tr>
+  <tbody>
+    <tr>
+      <td><img src="https://i.imgur.com/sF9WtIh.jpeg" alt="Imagem do Aplicativo" height="320"></td>
+      <td><img src="https://i.imgur.com/cpDQG2G.jpeg" alt="Busca por Endereço" height="320"></td>
+    </tr>
+  </tbody>
+</table>
 # Consumo da API do ViaCEP em .NET MAUI
 
 Este projeto demonstra como consumir a API pública do [ViaCEP](https://viacep.com.br/) utilizando .NET MAUI e C#.
