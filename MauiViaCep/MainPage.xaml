@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              BackgroundImageSource="fundo02.png"
              BackgroundColor="Black"
+             Title="Consulta de CEP´S"
              x:Class="MauiViaCep.MainPage">
 
     <StackLayout Margin="0" Padding="10" >
@@ -14,7 +15,7 @@
         
         <Label Text="Versão 1.1" TextColor="Tan" FontAttributes="Bold" HorizontalOptions="Start" Margin="0,0,20,20" />
 
-        <Frame CornerRadius="10" Padding="4" BackgroundColor="Black" Opacity="0.7"
+        <Frame CornerRadius="10" Padding="4" BackgroundColor="Navy" Opacity="0.7"
            Margin="10,10,10,10" BorderColor="Blue">
 
             <Grid Margin="10">
@@ -41,14 +42,15 @@
 
         <ActivityIndicator IsVisible="False" x:Name="xAtividade" Color="White" IsRunning="True" />
 
-        <Frame x:Name="frameEndereco" IsVisible="false" Margin="10" BackgroundColor="Gold" Opacity="0.7"
+        <Frame x:Name="frameEndereco" IsVisible="false" Margin="10" BackgroundColor="White" Opacity="0.7"
                BorderColor="Red">
 
             <Grid Padding="4"
              ColumnSpacing="10"
+             RowSpacing="0"
              HeightRequest="350"
              WidthRequest="310"
-             BackgroundColor="Gold">
+             BackgroundColor="Transparent">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -57,34 +59,56 @@
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="20"/>
                 </Grid.RowDefinitions>
 
-                <Image Source="email.png" Grid.Column="0" Grid.Row="0"
+                
+                <Picker x:Name="pkEstados" 
+                        Title="UF" 
+                        Grid.Column="0" 
+                        Grid.Row="0" 
+                        TextColor="Black" 
+                        TitleColor="Black" 
+                        SelectedIndexChanged="pkEstados_ItemSelecionado"
+                        />
+                
+                <Picker x:Name="pkCidades" 
+                        Title="Cidades" 
+                        Grid.Column="1" 
+                        Grid.Row="0" 
+                        TextColor="Black" 
+                        TitleColor="Black"
+                        SelectedIndexChanged="pkCidades_ItemSelecionado"
+                        />  
+
+                <Image Source="email.png" Grid.Column="0" Grid.Row="1"
                     WidthRequest="32"
                     HeightRequest="32"
-                    VerticalOptions="Center"
+                    VerticalOptions="Start"
                     Margin="0,0"/>  
 
                 <!-- Entry estilizado -->
-                <Entry Grid.Column="1" Grid.Row="0"
+                <Entry Grid.Column="1" Grid.Row="1"
                     x:Name="txtLogradouro"
                     Placeholder="Rua (min 3 caracteres)"
                     Keyboard="Text"
                     TextColor="Black"
                     PlaceholderColor="Black"
                     FontSize="16"
-                    WidthRequest="310"
+                    WidthRequest="250"
                     HorizontalTextAlignment="Center"
                     Completed="btnBuscarLogradouro_Clicked"
                     VerticalOptions="Center"/>
 
-                <ListView x:Name="lstEnds" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
+                <ListView x:Name="lstEnds" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" RowHeight="70"  >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid>
+                                <Grid Padding="0,5,0,5">
                                     <Grid.RowDefinitions>
+                                        <RowDefinition/>
                                         <RowDefinition/>
                                         <RowDefinition/>
                                     </Grid.RowDefinitions>
@@ -93,15 +117,17 @@
                                         <ColumnDefinition Width="100"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Image Source="pontinho.png" Aspect="AspectFill" HeightRequest="80" Grid.RowSpan="2"  BackgroundColor="Transparent" />
-                                    <Label Text="{Binding cep}" Grid.Column="1" TextColor="Black" FontAttributes="Bold" />
-                                    <Label Text="{Binding bairro}" Grid.Column="2" TextColor="Black" />
+                                    <Image Source="pontinho.png" Aspect="AspectFill" HeightRequest="80" Grid.RowSpan="3"  BackgroundColor="Transparent" VerticalOptions="Center" />
+                                    <Label Text="{Binding cep}" Grid.Row="0" Grid.Column="1" TextColor="Black" FontAttributes="Bold" />
                                     <Label Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Text="{Binding logradouro}" TextColor="Black" />
+                                    <Label Text="{Binding bairro}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" TextColor="Black" />
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+
+                <ImageButton Source="lixeira.svg" Clicked="btnLimpar_Clicked" HeightRequest="46" HorizontalOptions="End" Margin="0,0,0,0" Grid.Row="3" Grid.Column="2" />
 
             </Grid>
 
@@ -179,8 +205,10 @@
                 Clicked="btnBuscar_Clicked" />
 
     -->
-        
-     
+
+        <Label Text="Prof. Alessandro M. Fukuta"  TextColor="White" VerticalOptions="EndAndExpand" HorizontalTextAlignment="Center" />
+
+
     </StackLayout>
 
 </ContentPage>

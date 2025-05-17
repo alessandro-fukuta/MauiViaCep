@@ -15,8 +15,16 @@ namespace MauiViaCep
         public string UrlCompletaErro = string.Empty;
         public string UrlCompletaMensagem = string.Empty;
 
+        private string EstadoEscolhido = "";
+        private int EstadoItem = 0;
+        private string CidadeEscolhida = "";
+
         ViaCep _viaCep = new ViaCep();
-        public List<ViaCep> _listaViaCep = new List<ViaCep>();
+        // public List<ViaCep> _listaViaCep = new List<ViaCep>();
+
+        List<Estados> estadosLista;
+        List<Cidades> cidadesLista;
+
 
         bool Controle = false;
 
@@ -24,14 +32,32 @@ namespace MauiViaCep
         public MainPage()
         {
             InitializeComponent();
+            // pkEstados.ItemsSource = estados;
+
+            // consumir api de estados do ibge
+
+            string UrlEstados = "https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome";
+            var response = _httpClient.GetAsync(UrlEstados).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                var json = response.Content.ReadAsStringAsync().Result;
+                var estados = JsonSerializer.Deserialize<List<Estados>>(json);
+                estadosLista = new List<Estados>();
+                estadosLista = estados;
+                pkEstados.ItemsSource = estadosLista.Select(x => x.sigla).ToArray();
+            }
+            else
+            {
+                DisplayAlert("Erro", "Não foi possível carregar os estados.", "OK");
+            }
+
             txtCep.Focus();
         }
 
-       
+
         private async void btnBuscar_Clicked(object sender, EventArgs e)
         {
 
-          
 
             xAtividade.IsVisible = true;
 
@@ -64,7 +90,7 @@ namespace MauiViaCep
 
         private async void PreencheCampos(ViaCep? viaCep)
         {
-           // lblCepLogradouro.Text = txtCep.Text;
+            // lblCepLogradouro.Text = txtCep.Text;
             lblLogradouro.Text = viaCep.logradouro;
             lblBairro.Text = viaCep.bairro;
             lblCidade.Text = viaCep.localidade;
@@ -85,7 +111,7 @@ namespace MauiViaCep
 
         private void swFiltro_Toggled(object sender, ToggledEventArgs e)
         {
-            if(swFiltro.IsToggled)
+            if (swFiltro.IsToggled)
             {
                 // se o switch estiver ligado, frame por endereço aparece
                 Controle = false;
@@ -106,6 +132,18 @@ namespace MauiViaCep
         private async void btnBuscarLogradouro_Clicked(object sender, EventArgs e)
         {
             xAtividade.IsVisible = true;
+            
+            if (EstadoEscolhido == "")
+            {
+                await DisplayAlert("Atenção", "Selecione o ESTADO", "OK");
+                return;
+            }
+
+            if(CidadeEscolhida == "")
+            {
+                await DisplayAlert("Atenção", "Selecione a CIDADE", "OK");
+                return;
+            }
 
             // consumindo a api viacep
             if (string.IsNullOrEmpty(txtLogradouro.Text))
@@ -119,13 +157,61 @@ namespace MauiViaCep
                 return;
             }
 
-            
-            UrlCompleta = UrlBase + "SP/FRANCA/" + txtLogradouro.Text.ToUpper() + "/json";
+
+            UrlCompleta = UrlBase + EstadoEscolhido + "/" + CidadeEscolhida.ToUpper() + "/" + txtLogradouro.Text.ToUpper() + "/json";
             List<ViaCep> resultado = await ApiClass.GetJsonAsync(UrlCompleta);
             lstEnds.ItemsSource = resultado;
             xAtividade.IsVisible = false;
 
         }
-    }
 
+        private void btnLimpar_Clicked(object sender, EventArgs e)
+        {
+            lstEnds.ItemsSource = "";
+            txtLogradouro.Focus();
+        }
+
+        private async void pkEstados_ItemSelecionado(object sender, EventArgs e)
+        {
+            var picker = sender as Picker;
+            if (picker != null)
+            {
+
+                var estadoSelecionado = estadosLista[picker.SelectedIndex];
+                EstadoEscolhido = estadoSelecionado.sigla;
+                // DisplayAlert("Estado Selecionado", $"Você selecionou: {estadoSelecionado.id}", "OK");
+
+                // consumir api do ibge de municipios brasileiros por estado
+                xAtividade.IsVisible = true;
+                xAtividade.IsRunning = true;
+
+                string urlMunicipios = "https://servicodados.ibge.gov.br/api/v1/localidades/estados/" + estadoSelecionado.id.ToString() + "/municipios";
+                cidadesLista = await ApiClass.GetJsonCidades(urlMunicipios);
+
+                pkCidades.ItemsSource = cidadesLista.OrderBy(x=>x.nome).Select(x => x.nome).ToArray();
+
+                xAtividade.IsRunning = false;
+                xAtividade.IsVisible = false;
+
+
+            }
+        }
+
+        private void pkCidades_ItemSelecionado(object sender, EventArgs e)
+        {
+            var picker = sender as Picker;
+            if (picker != null)
+            {
+                var cidadeSelecionada = cidadesLista[picker.SelectedIndex];
+                
+                CidadeEscolhida = cidadeSelecionada.nome;
+                
+                
+               
+                // DisplayAlert("Cidade Selecionada", $"Você selecionou: {cidadeSelecionada.nome}", "OK");
+
+            }
+        }
+
+    }
 }
