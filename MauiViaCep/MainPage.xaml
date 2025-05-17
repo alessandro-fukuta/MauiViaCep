@@ -42,7 +42,7 @@
 
         <ActivityIndicator IsVisible="False" x:Name="xAtividade" Color="White" IsRunning="True" />
 
-        <Frame x:Name="frameEndereco" IsVisible="false" Margin="10" BackgroundColor="White" Opacity="0.7"
+        <Frame x:Name="frameEndereco" IsVisible="false" Margin="10" BackgroundColor="White" Opacity="0.9"
                BorderColor="Red">
 
             <Grid Padding="4"
@@ -69,7 +69,7 @@
                         Title="UF" 
                         Grid.Column="0" 
                         Grid.Row="0" 
-                        TextColor="Black" 
+                        TextColor="Black" FontSize="16" FontAttributes="Bold"
                         TitleColor="Black" 
                         SelectedIndexChanged="pkEstados_ItemSelecionado"
                         />
