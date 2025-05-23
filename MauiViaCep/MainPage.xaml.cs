@@ -79,7 +79,7 @@ namespace MauiViaCep
             UrlCompletaErro = UrlBase + txtCep.Text + "/erro" + UrlFinal;
             UrlCompletaMensagem = UrlBase + txtCep.Text + "/mensagem" + UrlFinal;
 
-            // troquei por essa linha, todo codigo comentando abaixo
+            // CONSUMINDO A API E RETORNANDO UMA LISTA
 
             List<ViaCep> resultado = await ApiClass.GetJsonAsync(UrlCompleta);
 
